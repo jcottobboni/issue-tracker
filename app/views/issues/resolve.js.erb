@@ -1,0 +1,11 @@
+console.log('<%= @issue.resolved %>');
+
+el = document.getElementById('resolve_button')
+
+<% if @issue.resolved %>
+  el.textContent = 'Reopen Issue'
+<% else %>
+  el.textContent = 'Resolve Issue'
+<% end %>
+
+document.getElementById('issue_resolved_status').outerHTML = "<%= escape_javascript resolve_issue_badge(@issue) %>"

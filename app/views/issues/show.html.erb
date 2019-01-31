@@ -1,0 +1,25 @@
+<div class="d-flex flex-row justify-content-between">
+  <div>
+    <h1><%= @issue.summary %></h1>
+    <%= resolve_issue_badge(@issue) %>
+  </div>
+
+  <div>
+    <%= link_to 'Edit', edit_issue_path(@issue), class: 'btn btn-secondary' %> 
+    <%= link_to 'New Issue', new_issue_path, class: 'btn btn-success' %>
+  </div>
+</div>
+
+<div id="issue-body">
+  <%= simple_format @issue.summary %>
+</div>
+
+<%= resolve_issue_button(@issue) %>
+
+<hr>
+
+<%= render partial: 'comments/form' %>
+
+<div id='comments'>
+  <%= render @issue.comments.by_date %>
+</div>

@@ -1,0 +1,32 @@
+<h1>Issues</h1>
+
+<%= form_tag import_issues_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td>
+          <%= link_to issue.summary, issue %>
+          <%= resolve_issue_badge(issue) %>
+        </td>
+        <td><%= time_ago_in_words issue.created_at %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Issue', new_issue_path, class: 'btn btn-secondary' %>
