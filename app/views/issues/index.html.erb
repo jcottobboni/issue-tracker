@@ -8,6 +8,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Number</th>
       <th>Title</th>
       <th>Age</th>
     </tr>
@@ -17,6 +18,7 @@
     <% @issues.each do |issue| %>
       <tr>
         <td>
+          <%=  issue.number %>
           <%= link_to issue.summary, issue %>
           <%= resolve_issue_badge(issue) %>
         </td>
